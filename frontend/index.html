@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vu Huy Du | Full-Stack AI Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #fcfcfc;
+      --bg-secondary: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-main: #0f172a;
+      --neo-shadow: #0f172a;
+      --accent-mint: #E4FCE4;
+      --accent-lavender: #E4E4FC;
+      --accent-pink: #FCE4E4;
+    }
+
+    body.dark {
+      --bg-primary: #050508;
+      /* Deep Cosmic Black */
+      --bg-secondary: #12121a;
+      /* Obsidian Card */
+      --text-main: #ffffff;
+      /* Pure white for high contrast */
+      --text-muted: #94a3b8;
+      /* Slate gray */
+      --border-main: #2dd4bf;
+      /* Teal/Cyan sharp border */
+      --neo-shadow: #000000;
+      /* Deep black shadow */
+
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(rgba(45, 212, 191, 0.15) 1.5px, transparent 1.5px);
+      color: var(--text-main);
+    }
+
+    body {
+      font-family: 'Lexend', sans-serif;
+      background-color: var(--bg-primary);
+      background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
+      color: #1e293b;
+      transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Standard component overrides for Dark Mode */
+    .dark .bg-white:not(.keep-white-bg) {
+      background-color: var(--bg-secondary) !important;
+    }
+
+    .dark .keep-white-bg {
+      background-color: #ffffff !important;
+    }
+
+    .dark .text-\[\#0f172a\] {
+      color: var(--text-main);
+    }
+
+
+    .dark .text-slate-700 {
+      color: #e2e8f0 !important;
+    }
+
+    .dark .text-slate-600 {
+      color: var(--text-muted) !important;
+    }
+
+    .dark .text-slate-500 {
+      color: var(--text-muted) !important;
+    }
+
+    /* Dynamic Border & Shadow for Dark Mode */
+    .dark .border-\[\#0f172a\] {
+      border-color: #334155 !important;
+    }
+
+    .dark .neo-shadow {
+      box-shadow: 4px 4px 0px 0px var(--neo-shadow);
+    }
+
+    .dark .neo-shadow-lg {
+      box-shadow: 8px 8px 0px 0px var(--neo-shadow);
+    }
+
+    /* Fix specific section backgrounds that might be hardcoded */
+    .dark .bg-\[\#fcfcfc\]\/90 {
+      background-color: rgba(5, 5, 8, 0.95) !important;
+    }
+
+    /* Vibrant Neon Accents for Dark Mode cards */
+    .dark .bg-\[\#E4FCE4\],
+    .dark .hover\:bg-\[\#E4FCE4\]:hover {
+      background-color: #064e3b !important;
+      border-color: #10b981 !important;
+      color: #34d399 !important;
+    }
+
+    .dark .bg-\[\#E4E4FC\],
+    .dark .hover\:bg-\[\#E4E4FC\]:hover {
+      background-color: #312e81 !important;
+      border-color: #6366f1 !important;
+      color: #a5b4fc !important;
+    }
+
+    .dark .bg-\[\#FCE4E4\],
+    .dark .hover\:bg-\[\#FCE4E4\]:hover {
+      background-color: #7f1d1d !important;
+      border-color: #f43f5e !important;
+      color: #fda4af !important;
+    }
+
+    /* Project Cards Hover in Dark Mode */
+    .dark .hover\:shadow-\[12px_12px_0px_0px_rgba\(15\,23\,42\,1\)\]:hover {
+      box-shadow: 12px 12px 0px 0px #000000 !important;
+    }
+
+    .neo-shadow {
+      box-shadow: 4px 4px 0px 0px #0f172a;
+      transition: all 0.3s ease;
+    }
+
+    .neo-shadow-hover:hover {
+      box-shadow: 2px 2px 0px 0px var(--neo-shadow);
+      transform: translate(2px, 2px);
+    }
+
+    .neo-shadow-lg {
+      box-shadow: 8px 8px 0px 0px #0f172a;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      20% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      80% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes fadeInLong {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-out {
+      animation: fadeInOut 2.5s ease-in-out forwards;
+    }
+
+    .animate-fade-in-long {
+      animation: fadeInLong 1s ease-out 2.5s forwards;
+      opacity: 0;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+
+</html>
